@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import { Card, Icon } from 'semantic-ui-react';
-import '../App.css'
+import '../App.css';
+import { connect } from 'react-redux';
+import { getPosts } from '../actions/postActions';
 
 class Posts extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: [],
+
+    componentWillMount(){
+        this.props.getPosts();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.newPost) {
+            this.props.posts.unshift(nextProps.newPost);
         }
     }
 
-    componentWillMount() {
-        axios.get('http://localhost:8000/api/posts/')
-        .then(res => this.setState({ posts: res.data }));
-    }
-
-    
-
   render() {
-    const postItems = this.state.posts.map(post => (
+    const postItems = this.props.posts.map(post => (
         <div key={post.id}>
         <Card
         raised = {true}
@@ -48,4 +47,15 @@ class Posts extends Component {
   }
 }
 
-export default Posts;
+Posts.propTypes = {
+    getPosts: PropTypes.func.isRequired,
+    posts: PropTypes.array.isRequired,
+    newPost: PropTypes.object
+}
+
+const mapStateToProps = state => ({
+    posts: state.posts.items,
+    newPost: state.posts.item
+});
+
+export default connect(mapStateToProps, { getPosts })(Posts);
