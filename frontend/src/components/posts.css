@@ -10,11 +10,11 @@
 }
 
 .notes {
-    width: 70vw;
+    width: 100%;
     padding: 20px 0px;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
