@@ -52,3 +52,7 @@ h2 {
     cursor: pointer;
 }
 
+.submitbutton:hover {
+    background-color: red;
+    color: white;
+}

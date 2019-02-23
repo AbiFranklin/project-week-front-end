@@ -86,7 +86,7 @@ export default class Posts extends Component {
                             <Form.TextArea label="Note:" name="text" width="16" defaultValue={post.text} onChange={changeText} />
                             </Form>
                             <Modal.Actions>
-                            <Button basic color="red" type="submit" content="Submit" onClick={submitPost}/>
+                            <Button basic className="submitbutton" color="red" type="submit" content="Submit" onClick={submitPost}/>
                             </Modal.Actions>        
                         </Modal>
                         </Card>)})}
