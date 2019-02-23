@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Modal, Icon, Card, Divider, Button } from 'semantic-ui-react'
+import { Header, Form, Modal, Icon, Card, Divider, Button } from 'semantic-ui-react'
 import './posts.css';
+import DeleteModal from './DeleteModal';
 
 
 export default class Posts extends Component {
@@ -76,7 +77,8 @@ export default class Posts extends Component {
                     return (<Card color="red" key={post.id} >
                         <Card.Header className="card-header">
                         <h2>{post.title}</h2>
-                        <Icon className='icon' onClick={() => {this.props.deleteOne(post.id)}} name='delete' color="red" />
+                        <DeleteModal deleteOne={this.props.deleteOne} id={post.id} />
+                        
                         </Card.Header>
                         <Divider />
                         <Card.Description className="card-text" >{post.text}</Card.Description>
