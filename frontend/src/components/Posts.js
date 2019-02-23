@@ -51,6 +51,28 @@ export default class Posts extends Component {
             <div className='notes'>
                 <Card.Group itemsPerRow={3} className="card-group" >
                 {this.props.posts.map(post => {
+                    const changeTitle = (e) => {
+                        this.setState({ title: post.title })
+                        if(e.target.value !== '') {
+                        this.setState({ title: e.target.value })
+                        } else {
+                         this.setState({ title: post.title })
+                        }
+                    }
+
+                    const changeText = (e) => {
+                        this.setState({ text: post.text })
+                        if(e.target.value !== '') {
+                        this.setState({ text: e.target.value })
+                        } else {
+                         this.setState({ text: post.text })
+                        }
+                    }
+
+                    const submitPost = (e) => {
+                        this.props.editOne(post.id, {title: post.title, text: this.state.text})
+                    }
+
                     return (<Card color="red" key={post.id} >
                         <Card.Header className="card-header">
                         <h2>{post.title}</h2>
@@ -60,11 +82,11 @@ export default class Posts extends Component {
                         <Card.Description className="card-text" >{post.text}</Card.Description>
                         <Modal size="mini" className="modal" closeIcon={true} trigger={<div className="modal"><Button>Edit</Button></div>}>
                             <Form>
-                            <Form.Input label="Title:" name="title" width="16" onClick={()=> {this.setState({title: post.title})}} onChange={(e) => this.handleTitle(e)}/>
-                            <Form.TextArea label="Note:" name="text" width="16" onChange={(e) => this.handleText(e)}/>
+                            <h2>{post.title}</h2>
+                            <Form.TextArea label="Note:" name="text" width="16" defaultValue={post.text} onChange={changeText} />
                             </Form>
                             <Modal.Actions>
-                            <Button basic color="red" type="submit" content="Submit" onClick={() => this.props.editOne(post.id, this.state)}/>
+                            <Button basic color="red" type="submit" content="Submit" onClick={submitPost}/>
                             </Modal.Actions>        
                         </Modal>
                         </Card>)})}

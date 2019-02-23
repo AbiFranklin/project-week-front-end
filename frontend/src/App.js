@@ -49,6 +49,7 @@ export default class App extends Component {
   }
 
   editOne(id, post) {
+    console.log(id, post)
     axios.put(`https://afranklin-lambdanotes.herokuapp.com/api/${id}`, post)
     .then(this.getAll())
     .catch(err => console.log(err))
@@ -60,6 +61,10 @@ export default class App extends Component {
       console.log(posts)
       this.setState({posts: posts.data, isLoading: false})
  });
+  }
+
+  componentDidUpdate() {
+    this.getAll()
   }
 
 

@@ -25,7 +25,7 @@
     margin-bottom: -10px;
 }
 
-.card-header h2 {
+h2 {
     font-family: 'Oswald', sans-serif;
     font-size: 1.5em;
     font-weight: lighter;
@@ -51,3 +51,4 @@
 .icon:hover {
     cursor: pointer;
 }
+

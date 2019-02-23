@@ -4,15 +4,13 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-<<<<<<< HEAD
-    "qs": "^6.6.0",
-=======
     "merge": "^1.2.1",
->>>>>>> e31f9b45f3147b9403a33cd6d0bf3e882892ce23
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
     "semantic-ui-react": "^0.85.0"
   },
   "scripts": {

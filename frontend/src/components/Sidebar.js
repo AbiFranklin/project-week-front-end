@@ -18,11 +18,9 @@ export default class Sidebar extends Component {
   }
 
   onSubmit() {
-    this.setState({ 
-      title: '',
-      text: '',
-      user_id: 1
-    })
+    this.props.postOne(this.state)
+    var form = document.getElementById("form");
+    form.reset();
   }
 
   handleTitle = (e) => {
@@ -38,10 +36,10 @@ export default class Sidebar extends Component {
     <div className='sidebar'>
        <Image src={logo} fluid={true} />
        <h1>Add Note</h1>
-       <Form onSubmit={this.onSubmit}>
-           <Form.Input label="Title" name="title" width="16" defaultValue={this.state.title} onChange={this.handleTitle} />
-           <Form.TextArea label="Note" name="text" width="16" defaultValue={this.state.text} onChange={this.handleText}/>
-           <Button basic color="red" type="submit" content="Submit" onClick={() => this.props.postOne(this.state)}/>
+       <Form onSubmit={this.onSubmit} id="form">
+           <Form.Input label="Title" name="title" width="16"  onChange={this.handleTitle} />
+           <Form.TextArea label="Note" name="text" width="16"  onChange={this.handleText}/>
+           <Button basic color="red" type="submit" content="Submit" />
        </Form>
     </div>
   )
